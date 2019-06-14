@@ -1,3 +1,6 @@
+#creates a resource group, a virtual machine, and all related resources.
+
+
 # Variables for common values
 $resourceGroup = "myResourceGroup"    #replace with necessary values
 $location = "westeurope"
@@ -41,3 +44,6 @@ Add-AzVMNetworkInterface -Id $nic.Id
 
 # Create a virtual machine
 New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
+
+#run the following command to remove the resource group, VM, and all related resources.
+Remove-AzResourceGroup -Name myResourceGroup
