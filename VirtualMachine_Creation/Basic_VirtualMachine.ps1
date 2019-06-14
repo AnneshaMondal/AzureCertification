@@ -1,5 +1,7 @@
-#creates a virtual machine and uses the Azure Custom Script extension to install IIS
-#after running the script you can access the default IIS website on the public IP address of the virtual machine
+<#creates a resource group, a virtual machine, and all related resources within a minimum number of prompts. 
+creates an Azure Virtual Machine running Widows Server 2016
+After running the script you can access the virtual machine over RDP.
+#>
 
 # Variables for common values
 $resourceGroup = "myResourceGroup"
@@ -23,13 +25,4 @@ New-AzVM `
   -SecurityGroupName "myNetworkSecurityGroup" `
   -PublicIpAddressName "myPublicIp" `
   -Credential $cred `
-  -OpenPorts 80
-
-# Install IIS
-$PublicSettings = '{"commandToExecute":"powershell Add-WindowsFeature Web-Server"}'
-
-Set-AzVMExtension -ExtensionName "IIS" -ResourceGroupName $resourceGroup -VMName $vmName `
-  -Publisher "Microsoft.Compute" -ExtensionType "CustomScriptExtension" -TypeHandlerVersion 1.4 `
-  -SettingString $PublicSettings -Location $location
-
-  
+  -OpenPorts 3389
