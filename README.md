@@ -1,2 +1,2 @@
 # AzureCertification
-# GitHub Repository with script from class examples
+# GitHub Repository with scripts from class examples
